@@ -1,15 +1,8 @@
-pipeline {
-    agent {
-        docker {
-            image 'maven:3.9.3-eclipse-temurin-11' 
-            args '-v /root/.m2:/root/.m2' 
-        }
-    }
-    stages {
-        stage('Build') { 
-            steps {
-                sh 'mvn -B -DskipTests clean package' 
-            }
-        }
-    }
-}
+ stage("Clone the project") {
+    git branch: 'main', url: 'https://github.com/KamalPac/hellowebapp.git'
+  }
+
+  stage("Compilation") {
+    sh "./mvnw clean install -DskipTests"
+  }
+node {
