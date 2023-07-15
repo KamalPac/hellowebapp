@@ -4,6 +4,6 @@ node {
   }
 
   stage("Compilation") {
-    sh "./abbrevia8/mvnw clean install -DskipTests"
+    bat "./abbrevia8/mvnw clean install -DskipTests"
   }
 }
